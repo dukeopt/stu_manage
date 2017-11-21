@@ -1,0 +1,86 @@
+
+.comment_list{
+	margin-top: 0px;
+}
+
+.div_even{
+	background-color: #efefef;
+}
+
+.comment_card {
+	display:block;
+	padding:4px;
+	margin-bottom:20px;
+	line-height:1.42857143;
+	border-radius:4px;
+	-webkit-transition:border .2s ease-in-out;-o-transition:border .2s ease-in-out;transition:border .2s ease-in-out
+}
+.comment_card>a, 
+.comment_card>a:focus, 
+.comment_card>a:hover,{
+	text-decoration: none;
+}
+
+/*图片*/
+.comment_card .img{
+	height: 120px;
+	-webkit-background-size:cover;
+	background-size: cover;
+	background-position: center;
+}
+/*标题*/
+.comment_card .title{
+	font-size: 16px;
+	font-weight: 600;
+	padding: 10px 10px 10px 10px;
+	border-bottom: 1px solid #ddd;
+	min-height: 20px;
+	color: #000;
+	text-align: center;
+
+}
+
+/*新闻简介*/
+.comment_card .content{
+	padding: 10px 10px 10px 10px;
+	border-bottom: 1px solid #ddd;
+	min-height: 20px;
+	color: #000;
+	font-size: 12px;
+	color: gray;
+}
+.comment_card .content .value{
+	text-align: right;
+}
+
+.comment_card .comment{
+	font-size: 14px;
+	font-weight: 600;
+	padding: 10px 10px 10px 10px;
+	border-bottom: 1px solid #ddd;
+	min-height: 20px;
+	color: #000;
+	text-align: left;
+}
+
+.comment_card .message{
+	font-size: 14px;
+	font-weight: 600;
+	padding: 10px 10px 10px 10px;
+	min-height: 20px;
+	color: #000;
+}
+.comment_card .message textarea{
+	margin-top: 5px;
+	border-radius: 4px;
+    width: 100%;
+}
+/*底部标签*/
+.comment_card .message .send {
+	font-size: 10px;
+	margin-top: 5px;
+	color: #999;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
