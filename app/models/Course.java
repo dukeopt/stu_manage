@@ -9,10 +9,8 @@ import play.data.validation.*;
 public class Course extends Model {
 
     @Id
-    @Constraints.Min(10)
     public Long id;
 
-    @Constraints.Required
     public String name;
 
     public static final Finder<Long, Course> find = new Finder<>(Course.class);

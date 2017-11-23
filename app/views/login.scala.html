@@ -1,4 +1,7 @@
-@(loginForm: Form[views.form.LoginForm],msg:String)
+@import b3.vertical.fieldConstructor
+@import helper._
+@import data.forms.LoginForm
+@(loginForm: Form[LoginForm])
 
 @main() {
   <style>
@@ -26,9 +29,9 @@
     </div>
     <div class="navbar-right pull-right">
       <ul class="nav navbar-nav">
-        <li style="display: -webkit-inline-box;"><a href="/">教师端登录</a></li>
-        <li style="display: -webkit-inline-box;"><a href="/">学生端登录</a></li>
-        <li style="display: -webkit-inline-box;"><a href="/">管理员登录</a></li>
+        <li style="display: -webkit-inline-box;"><a href="/">aaaa</a></li>
+        <li style="display: -webkit-inline-box;"><a href="/">bbbb</a></li>
+        <li style="display: -webkit-inline-box;"><a href="/">cccc</a></li>
       </ul>
     </div>
   </div>
@@ -39,50 +42,15 @@
     </div>
 
     <div class="col-md-5 col-md-offset-3">
-      <form name="" action="/login" method="POST">
-        @defining(loginForm("name")) { field =>
-          @if(field.hasErrors) {
-            <div class="form-group has-error has-feedback">
-              <label>用户名</label>
-              <input type="text" id="@field.id" name="@field.name" class="form-control" value="@field.value" placeholder="用户名" tabindex="1">
-              <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-              <span class="text-danger">
-              @for(error <- field.errors) {
-                @error.message
-              }
-              </span>
-            </div><!-- form-group -->
-          } else {
-            <div class="form-group">
-              <label>用户名</label>
-              <input type="email" id="@field.id" name="@field.name" class="form-control" value="@field.value" placeholder="用户名" tabindex="1">
-            </div><!-- form-group -->
-          }
+      @b3.form(routes.LoginController.login()) {
+        @CSRF.formField
+        @b3.text( loginForm("name"), '_label -> "用户名", 'placeholder -> "用户名" )
+        @b3.password( loginForm("password"), '_label -> "密码", 'placeholder -> "密码" )
+        @b3.submit('class -> "btn btn-default"){ 登录 }
+        @for(error <- loginForm("name").errors) {
+          <p>@error.format(messages())</p>
         }
-
-        @defining(loginForm("password")) { field =>
-          @if(field.hasErrors) {
-            <div class="form-group has-error has-feedback">
-              <label>密码</label>
-              <input type="password" id="@field.id" name="@field.name" class="form-control" value="@field.value" placeholder="密码" tabindex="2">
-              <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-              <span class="text-danger">
-              @for(error <- field.errors) {
-                @error.message
-              }
-              </span>
-            </div><!-- form-group -->
-          } else {
-            <div class="form-group">
-              <label>密码</label>
-              <input type="password" name="@field.name" id="@field.id" value="@field.value" class="form-control" placeholder="密码" tabindex="2">
-            </div>
-          }
-        }
-        <button type="submit" class="btn btn-default" tabindex="3">登录</button>
-        <span class="text-success"><h4><b>@msg</b></h4></span>
-      </form>
+      }
     </div>
   </div>
-
 }

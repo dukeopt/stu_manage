@@ -1,5 +1,3 @@
-# ページのタイトル
-title.default   = 学生管理系统
-error.emptyName = name为空
-error.emptysortId = sortId为空
-error.sortIdIsExsit = 有效的sortId已经存在
+title.default   = FUCK
+error.emptyName = 用户名为空
+error.emptyPassword = 密码为空
