@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" tabindex="-1">
+    @Messages("title.default")
+    </a>
+    <div class="navbar-text navbar-right">
+    @if(session.get("name") != null){
+      <div class="dropdown pull-right">
+        <span>欢迎您</span>
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          @session.get("name")
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="/logout">退出登录</a></li>
+        </ul>
+      </div>
+    }
+    </div>
+  </div>
+</nav>

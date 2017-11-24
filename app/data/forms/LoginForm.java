@@ -59,6 +59,8 @@ public class LoginForm implements Validatable<List<ValidationError>> {
                     errors.add(new ValidationError("password", messageService.at("error.password")));
                 } else {
                     session().put("id", String.valueOf(person.id));
+                    session().put("name", String.valueOf(person.name));
+                    session().put("type", type);
                 }
             }
         }
