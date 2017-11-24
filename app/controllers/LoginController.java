@@ -31,8 +31,15 @@ public class LoginController extends Controller {
             return badRequest(login.render(formData));
         } else {
             LoginForm loginForm = formData.get();
+            if(loginForm.type.equals("student")) {
+                return redirect("/student/");
+            } else if (loginForm.type.equals("teacher")) {
+                return redirect("/teacher");
+            } else if (loginForm.type.equals("admin")) {
+                return redirect("/admin");
+            }
         }
-        return ok(login.render(formData));
+        return ok();
     }
 
 }

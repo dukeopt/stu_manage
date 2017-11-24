@@ -1,5 +1,10 @@
 package data.forms;
 
+import dao.AdminDao;
+import dao.Dao;
+import dao.StudentDao;
+import dao.TeacherDao;
+import models.Person;
 import play.Play;
 import play.data.validation.Constraints;
 import play.data.validation.Constraints.*;
@@ -16,6 +21,7 @@ public class LoginForm implements Validatable<List<ValidationError>> {
     public String name;
     @Constraints.Required
     public String password;
+    public String type;
 
     public LoginForm() {
     }
@@ -31,22 +37,31 @@ public class LoginForm implements Validatable<List<ValidationError>> {
 
         final List<ValidationError> errors = new ArrayList<>();
         MessageService messageService = Play.application().injector().instanceOf(MessageService.class);
+        Dao dao;
+        Person person = null;
 
-        if (name == null || name.length() == 0) {
-            errors.add(new ValidationError("email", messageService.at("error.emptyName")));
-        }
-        if (password == null || password.length() == 0) {
-            System.out.println("111" + messageService);
-            errors.add(new ValidationError("password", messageService.at("error.emptyPassword")));
-        }
         if (name != null && name.length() != 0 && password != null && password.length() != 0) {
-            if (!password.equals("111")) {
-                System.out.println("-----------------"+ messageService);
-                errors.add(new ValidationError("password", messageService.at("error.emptyPassword")));
-            }
-            session().put("user", "1");
-        }
 
+            if (type.equals("student")) {
+                dao = Play.application().injector().instanceOf(StudentDao.class);
+                person = (Person) dao.findByName(name);
+            } else if (type.equals("teacher")) {
+                dao = Play.application().injector().instanceOf(TeacherDao.class);
+                person = (Person) dao.findByName(name);
+            } else {
+                dao = Play.application().injector().instanceOf(AdminDao.class);
+                person = (Person) dao.findByName(name);
+            }
+            if (person == null) {
+                errors.add(new ValidationError("name", messageService.at("error.emptyName")));
+            } else {
+                if (!person.password.equals(password)) {
+                    errors.add(new ValidationError("password", messageService.at("error.password")));
+                } else {
+                    session().put("id", String.valueOf(person.id));
+                }
+            }
+        }
         return errors.isEmpty() ? null : errors;
     }
 }
