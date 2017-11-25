@@ -6,6 +6,6 @@ import play.mvc.Result;
 public class TeacherController extends Controller {
 
     public Result index() {
-        return ok(views.html.index.render());
+        return ok(views.html.teacher.index.render());
     }
 }

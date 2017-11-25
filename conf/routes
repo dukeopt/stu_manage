@@ -4,7 +4,9 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.LoginController.index
+GET     /login                      controllers.LoginController.index
 POST    /login                      controllers.LoginController.login
+GET     /logout                     controllers.LogoutController.logout
 
 GET    /student                     controllers.student.StudentController.index
 GET    /teacher                     controllers.teacher.TeacherController.index
