@@ -55,11 +55,11 @@ public class LoginForm implements Validatable<List<ValidationError>> {
             if (person == null) {
                 errors.add(new ValidationError("name", messageService.at("error.emptyName")));
             } else {
-                if (!person.password.equals(password)) {
+                if (!person.getPassword().equals(password)) {
                     errors.add(new ValidationError("password", messageService.at("error.password")));
                 } else {
-                    session().put("id", String.valueOf(person.id));
-                    session().put("name", String.valueOf(person.name));
+                    session().put("id", String.valueOf(person.getId()));
+                    session().put("name", String.valueOf(person.getName()));
                     session().put("type", type);
                 }
             }
