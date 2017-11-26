@@ -13,7 +13,8 @@ GET     /teacher               controllers.TeacherController.index
 GET     /admin                 controllers.AdminController.index
 
 GET     /course/list           controllers.CourseController.list
-POST    /course/add            controllers.CourseController.add
+GET     /course/add            controllers.CourseController.add
+POST    /course/save           controllers.CourseController.save
 GET     /course/del/:id        controllers.CourseController.delete(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path

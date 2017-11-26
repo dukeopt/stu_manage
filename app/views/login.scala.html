@@ -53,8 +53,16 @@
   </div>
   <script type="text/javascript">
     function acc_type(type) {
+      var text;
+      if (type == "student") {
+        text = "学生";
+      } else if (type == "teacher") {
+        text = "教师";
+      } else {
+        text = "管理员";
+      }
       $("#type").val(type);
-      $("#submit").text(type + "登录");
+      $("#submit").text(text + "登录");
     }
   </script>
 }

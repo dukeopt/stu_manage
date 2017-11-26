@@ -26,6 +26,11 @@ public class CourseController extends Controller {
     }
 
     public Result add() {
+        Form<AddForm> addForm = formFactory.form(AddForm.class);
+        return ok(views.html.course.add.render(addForm));
+    }
+
+    public Result save() {
 
         Form<AddForm> formData = formFactory.form(AddForm.class).bindFromRequest();
         if (formData.hasErrors()) {
@@ -35,7 +40,7 @@ public class CourseController extends Controller {
             Course course = new Course();
             course.setName(addForm.name);
             course.save();
-            return redirect("course/list");
+            return redirect("list");
         }
     }
 
@@ -45,6 +50,7 @@ public class CourseController extends Controller {
     }
 
     public Result delete(long id) {
-        return ok();
+        courseDao.delete(id);
+        return redirect("/course/list");
     }
 }
