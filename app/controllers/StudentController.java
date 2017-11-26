@@ -1,9 +1,9 @@
-package controllers.course;
+package controllers;
 
 import play.mvc.Controller;
 import play.mvc.Result;
 
-public class CourseController extends Controller {
+public class StudentController extends Controller {
 
     public Result index() {
         return ok(views.html.index.render());

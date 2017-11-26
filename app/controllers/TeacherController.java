@@ -1,4 +1,4 @@
-package controllers.teacher;
+package controllers;
 
 import play.mvc.Controller;
 import play.mvc.Result;

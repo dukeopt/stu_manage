@@ -10,7 +10,7 @@ public class AdminDao implements Dao {
     public static final Finder<Long, Admin> find = new Finder<>(Admin.class);
 
     @Override
-    public List<Admin> all() {
+    public List<Admin> list() {
         return find.all();
     }
 

@@ -1,25 +1,26 @@
 package dao;
 
 import io.ebean.Finder;
-import models.Teacher;
+import models.Course;
 
 import java.util.List;
 
-public class TeacherDao extends PersonDao {
-    public static final Finder<Long, Teacher> find = new Finder<>(Teacher.class);
+public class CourseDao  implements Dao {
+
+    public static final Finder<Long, Course> find = new Finder<>(Course.class);
 
     @Override
-    public List<Teacher> list() {
+    public List<Course> list() {
         return find.all();
     }
 
     @Override
-    public Teacher findById(long id) {
+    public Course findById(long id) {
         return find.byId(id);
     }
 
     @Override
-    public Teacher findByName(String name) {
+    public Course findByName(String name) {
         return find.query().where()
                 .eq("name", name)
                 .findUnique();

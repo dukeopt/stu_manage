@@ -1,0 +1,27 @@
+@import helper._
+@import b3.vertical.fieldConstructor
+@import data.forms.course.AddForm
+@(addForm: Form[AddForm])
+
+@main(){
+  @views.html.header.render
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2" >
+      @views.html.left.render
+      </div><!--col-md-2 -->
+      <div class="col-md-10">
+          <!--画面内容-->
+        <div class="content-box-large min-height">
+          <div class="content-box-large">
+          @b3.form(routes.CourseController.add()) {
+            @CSRF.formField
+            @b3.text( addForm("name"), '_label -> "课程名", 'placeholder -> "课程名" )
+            @b3.submit('class -> "btn btn-default", 'id -> "submit"){ 添加课程 }
+          }
+          </div><!--content-box-large-->
+        </div><!--content-box-large min-height-->
+      </div><!--col-md-10 -->
+    </div><!--row-->
+  </div><!--container-fluid-->
+}

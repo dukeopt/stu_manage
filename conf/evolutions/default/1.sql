@@ -13,7 +13,6 @@ create table admin (
 create table course (
   id                            bigint auto_increment not null,
   name                          varchar(255),
-  teacher_id                    bigint,
   constraint pk_course primary key (id)
 );
 

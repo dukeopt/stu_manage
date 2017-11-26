@@ -10,7 +10,7 @@ public class StudentDao extends PersonDao {
     public static final Finder<Long, Student> find = new Finder<>(Student.class);
 
     @Override
-    public List<Student> all() {
+    public List<Student> list() {
         return find.all();
     }
 

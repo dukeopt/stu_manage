@@ -15,8 +15,6 @@ public class Course extends Model {
 
     private String name;
 
-    private Long teacherId;
-
     public Long getId() {
         return id;
     }
@@ -31,14 +29,6 @@ public class Course extends Model {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(Long teacherId) {
-        this.teacherId = teacherId;
     }
 
 }
