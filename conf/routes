@@ -17,5 +17,12 @@ GET     /course/add            controllers.CourseController.add
 POST    /course/save           controllers.CourseController.save
 GET     /course/del/:id        controllers.CourseController.delete(id: Long)
 
+GET     /teacher/list           controllers.TeacherController.list
+GET     /teacher/add            controllers.TeacherController.add
+POST    /teacher/save           controllers.TeacherController.save
+GET     /teacher/edit/:id       controllers.TeacherController.edit(id: Long)
+POST    /teacher/update         controllers.TeacherController.update
+GET     /teacher/del/:id        controllers.TeacherController.delete(id: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file          controllers.Assets.versioned(path="/public", file: Asset)

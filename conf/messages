@@ -1,3 +1,4 @@
 title.default   = 学生作业管理系统
 error.emptyName = 用户名不存在
 error.password = 密码错误
+error.confirm.password = 两次输入的密码不一致

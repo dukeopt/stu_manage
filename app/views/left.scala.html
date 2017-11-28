@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="current"><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>
-            <li class="current"><a href="#"><i class="glyphicon glyphicon-user"></i>教师管理</a></li>
+            <li class="current"><a href="/teacher/list"><i class="glyphicon glyphicon-user"></i>教师管理</a></li>
             <li class="current"><a href="/course/list"><i class="glyphicon glyphicon-calendar"></i>课程管理</a></li>
           </ul>
         </div>
@@ -20,14 +20,14 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="submenu" id="30">
+            <li class="submenu">
               <a href="#" >
                 <i class="glyphicon glyphicon-calendar"></i>
                 课程管理 <b class="caret"></b>
               </a>
               <ul>
-                <li><a id = 31 href="#">课程一览</a></li>
-                <li><a id = 32 href="#">添加课程</a></li>
+                <li><a href="#">课程一览</a></li>
+                <li><a href="#">添加课程</a></li>
               </ul>
             </li>
             <li class="current"><a href="#"><i class="glyphicon glyphicon-user"></i>成绩管理</a></li>
@@ -36,12 +36,3 @@
       </div>
   }
 </div>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    var li = $("#menu").val();
-    var ul = Math.floor(li/10%10)*10;
-    $("#"+li).addClass("current");
-    $("#"+ul).addClass("open");
-  });
-</script>
