@@ -1,5 +1,6 @@
-package controllers;
+package controllers.gui.admin;
 
+import dao.CourseTeacherDao;
 import dao.TeacherDao;
 import data.forms.teacher.AddForm;
 import data.forms.teacher.EditForm;
@@ -16,9 +17,11 @@ public class TeacherController extends Controller {
 
     private FormFactory formFactory;
     private TeacherDao teacherDao;
+
     @Inject
     public TeacherController(FormFactory formFactory,
-                            TeacherDao teacherDao) {
+                            TeacherDao teacherDao,
+                            CourseTeacherDao ctDao) {
         this.formFactory = formFactory;
         this.teacherDao = teacherDao;
     }
@@ -29,21 +32,21 @@ public class TeacherController extends Controller {
 
     public Result add() {
         Form<AddForm> formData = formFactory.form(AddForm.class);
-        return ok(views.html.teacher.add.render(formData));
+        return ok(views.html.admin.teacher.add.render(formData));
     }
 
     public Result save() {
 
         Form<AddForm> formData = formFactory.form(AddForm.class).bindFromRequest();
         if (formData.hasErrors()) {
-            return badRequest(views.html.teacher.add.render(formData));
+            return badRequest(views.html.admin.teacher.add.render(formData));
         } else {
             AddForm addForm = formData.get();
             Teacher teacher = new Teacher();
             teacher.setName(addForm.name);
             teacher.setPassword(addForm.password);
             teacher.save();
-            return redirect("list");
+            return redirect("/admin/teacher/list");
         }
     }
 
@@ -52,30 +55,30 @@ public class TeacherController extends Controller {
         EditForm formData = new EditForm();
         formData.id = id;
         Form<EditForm> form = formFactory.form(EditForm.class).fill(formData);
-        return ok(views.html.teacher.edit.render(form));
+        return ok(views.html.admin.teacher.edit.render(form));
     }
 
     public Result update() {
 
         Form<EditForm> formData = formFactory.form(EditForm.class).bindFromRequest();
         if (formData.hasErrors()) {
-            return badRequest(views.html.teacher.edit.render(formData));
+            return badRequest(views.html.admin.teacher.edit.render(formData));
         } else {
             EditForm editForm = formData.get();
             Teacher teacher = teacherDao.findById(editForm.id);
             teacher.setPassword(editForm.password);
             teacher.update();
-            return redirect("list");
+            return redirect("/admin/teacher/list");
         }
     }
 
     public Result list() {
         List<Teacher> teachers = teacherDao.list();
-        return ok(views.html.teacher.list.render(teachers));
+        return ok(views.html.admin.teacher.list.render(teachers));
     }
 
     public Result delete(long id) {
         teacherDao.delete(id);
-        return redirect("/teacher/list");
+        return redirect("/admin/teacher/list");
     }
 }

@@ -5,7 +5,7 @@ import models.Course;
 
 import java.util.List;
 
-public class CourseDao  implements Dao {
+public class CourseDao implements Dao {
 
     public static final Finder<Long, Course> find = new Finder<>(Course.class);
 

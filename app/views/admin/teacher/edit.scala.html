@@ -1,0 +1,29 @@
+@import helper._
+@import b3.vertical.fieldConstructor
+@import data.forms.teacher.EditForm
+@(editForm: Form[EditForm])
+
+@main(){
+  @views.html.header.render
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2" >
+      @views.html.left.render
+      </div><!--col-md-2 -->
+      <div class="col-md-10">
+          <!--画面内容-->
+        <div class="content-box-large min-height">
+          <div class="content-box-large">
+          @b3.form(gui.admin.routes.TeacherController.update()) {
+            @CSRF.formField
+            @b3.hidden( editForm("id"), 'id -> "id", 'value -> editForm("id"))
+            @b3.password( editForm("password"), '_label -> "密码", 'placeholder -> "密码" )
+            @b3.password( editForm("cPassword"), '_label -> "确认密码", 'placeholder -> "确认密码" )
+            @b3.submit('class -> "btn btn-default", 'id -> "submit"){ 修改密码 }
+          }
+          </div><!--content-box-large-->
+        </div><!--content-box-large min-height-->
+      </div><!--col-md-10 -->
+    </div><!--row-->
+  </div><!--container-fluid-->
+}

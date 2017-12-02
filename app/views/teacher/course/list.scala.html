@@ -11,7 +11,7 @@
           <!--画面内容-->
         <div class="content-box-large min-height">
           <div class="content-box-large">
-            <form name="listCarriage" action="/course/add" method="get">
+            <form name="listCarriage" action="/admin/course/add" method="get">
               <div class="col-sm-12">
                 <button type="button" class="btn btn-primary pull-right"
                 onClick="location.href='/course/add'">
@@ -34,7 +34,7 @@
                     <td>@course.getName</td>
                     <td class="text-right">
                       <button type="button" class="btn btn-danger"
-                      onClick="location.href='/course/del/@course.getId'">
+                      onClick="location.href='/admin/course/del/@course.getId'">
                           删除
                       </button>
                     </td>

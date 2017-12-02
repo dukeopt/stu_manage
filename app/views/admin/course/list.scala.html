@@ -1,4 +1,4 @@
-@(courses: List[Teacher])
+@(courses: List[Course])
 
 @main(){
   @views.html.header.render
@@ -11,10 +11,9 @@
           <!--画面内容-->
         <div class="content-box-large min-height">
           <div class="content-box-large">
-            <form name="listCarriage" action="/teacher/add" method="get">
               <div class="col-sm-12">
                 <button type="button" class="btn btn-primary pull-right"
-                onClick="location.href='/teacher/add'">
+                onClick="location.href='/admin/course/add'">
                   追加
                 </button>
               </div>
@@ -33,12 +32,8 @@
                     <td>@course.getId</td>
                     <td>@course.getName</td>
                     <td class="text-right">
-                      <button type="button" class="btn btn-warning"
-                      onClick="location.href='/teacher/edit/@course.getId'">
-                        修改密码
-                      </button>
                       <button type="button" class="btn btn-danger"
-                      onClick="location.href='/teacher/del/@course.getId'">
+                      onClick="location.href='/admin/course/del/@course.getId'">
                           删除
                       </button>
                     </td>
@@ -46,7 +41,6 @@
                 }
                 </tbody>
               </table>
-            </form>
           </div><!--content-box-large-->
         </div><!--content-box-large min-height-->
       </div><!--col-md-10 -->

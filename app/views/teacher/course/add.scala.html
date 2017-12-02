@@ -1,7 +1,7 @@
 @import helper._
 @import b3.vertical.fieldConstructor
-@import data.forms.teacher.EditForm
-@(editForm: Form[EditForm])
+@import data.forms.course.AddForm
+@(addForm: Form[AddForm])
 
 @main(){
   @views.html.header.render
@@ -14,12 +14,10 @@
           <!--画面内容-->
         <div class="content-box-large min-height">
           <div class="content-box-large">
-          @b3.form(routes.TeacherController.update()) {
+          @b3.form(gui.admin.routes.CourseController.save()) {
             @CSRF.formField
-            @b3.hidden( editForm("id"), 'id -> "id", 'value -> editForm("id"))
-            @b3.password( editForm("password"), '_label -> "密码", 'placeholder -> "密码" )
-            @b3.password( editForm("cPassword"), '_label -> "确认密码", 'placeholder -> "确认密码" )
-            @b3.submit('class -> "btn btn-default", 'id -> "submit"){ 修改密码 }
+            @b3.text( addForm("name"), '_label -> "课程名", 'placeholder -> "课程名" )
+            @b3.submit('class -> "btn btn-default", 'id -> "submit"){ 添加课程 }
           }
           </div><!--content-box-large-->
         </div><!--content-box-large min-height-->
