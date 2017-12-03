@@ -1,19 +1,18 @@
-package models;
+package models.construct;
 
 import io.ebean.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+public class CT extends Model {
 
-@Entity
-public class CourseTeacher extends Model {
-
-    @Id
     private long id;
 
     private long courseId;
 
+    private String courseName;
+
     private long teacherId;
+
+    private String teacherName;
 
     public long getId() {
         return id;
@@ -37,5 +36,21 @@ public class CourseTeacher extends Model {
 
     public void setTeacherId(long teacherId) {
         this.teacherId = teacherId;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 }

@@ -2,8 +2,13 @@ package models;
 
 import io.ebean.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class CourseStudent extends Model{
 
+    @Id
     private long id;
 
     private long courseId;

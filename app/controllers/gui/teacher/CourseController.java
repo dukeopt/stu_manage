@@ -1,7 +1,9 @@
 package controllers.gui.teacher;
 
 import dao.CourseTeacherDao;
+import models.Course;
 import models.CourseTeacher;
+import models.construct.CT;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -14,27 +16,31 @@ public class CourseController extends Controller {
 
     @Inject
     public CourseController(CourseTeacherDao ctDao) {
-
+        this.ctDao = ctDao;
     }
 
-    public Result add(long cId) {
-        long tId = Long.getLong(session().get("id"));
+    public Result list() {
+        long tId =  Long.parseLong(session().get("id"));
+        List<CT> cts = ctDao.optList(tId);
+        return ok(views.html.teacher.course.list.render(cts));
+    }
+
+    public Result add() {
+        List<Course> courses = ctDao.list(Long.parseLong(session().get("id")));
+        return ok(views.html.teacher.course.add.render(courses));
+    }
+
+    public Result save(long cId) {
+        long tId = Long.parseLong(session().get("id"));
         CourseTeacher ct = new CourseTeacher();
-        ct.setCourseId(cId);
         ct.setTeacherId(tId);
+        ct.setCourseId(cId);
         ct.save();
-        return ok();
+        return redirect("/teacher/course/list");
     }
 
     public Result del(long id) {
         ctDao.delete(id);
-        return ok();
+        return redirect("/teacher/course/list");
     }
-
-    public Result list() {
-        List<CourseTeacher> cts = ctDao.list();
-        return ok();
-    }
-
-
 }

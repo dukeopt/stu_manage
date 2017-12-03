@@ -16,6 +16,20 @@ create table course (
   constraint pk_course primary key (id)
 );
 
+create table course_student (
+  id                            bigint auto_increment not null,
+  course_id                     bigint not null,
+  student_id                    bigint not null,
+  constraint pk_course_student primary key (id)
+);
+
+create table course_teacher (
+  id                            bigint auto_increment not null,
+  course_id                     bigint not null,
+  teacher_id                    bigint not null,
+  constraint pk_course_teacher primary key (id)
+);
+
 create table score (
   id                            bigint auto_increment not null,
   score                         double not null,
@@ -44,6 +58,10 @@ create table teacher (
 drop table if exists admin;
 
 drop table if exists course;
+
+drop table if exists course_student;
+
+drop table if exists course_teacher;
 
 drop table if exists score;
 

@@ -24,7 +24,9 @@ GET     /admin/teacher/edit/:id        controllers.gui.admin.TeacherController.e
 POST    /admin/teacher/update          controllers.gui.admin.TeacherController.update
 GET     /admin/teacher/del/:id         controllers.gui.admin.TeacherController.delete(id: Long)
 
-GET     /teacher/course/list            controllers.gui.teacher.CourseController.list()
+GET     /teacher/course/list            controllers.gui.teacher.CourseController.list
+GET     /teacher/course/add             controllers.gui.teacher.CourseController.add
+GET     /teacher/course/save/:cId       controllers.gui.teacher.CourseController.save(cId: Long)
 GET     /teacher/course/del/:cId        controllers.gui.teacher.CourseController.del(cId: Long)
 
 

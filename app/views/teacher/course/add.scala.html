@@ -1,7 +1,4 @@
-@import helper._
-@import b3.vertical.fieldConstructor
-@import data.forms.course.AddForm
-@(addForm: Form[AddForm])
+@(courses: List[Course])
 
 @main(){
   @views.html.header.render
@@ -13,13 +10,31 @@
       <div class="col-md-10">
           <!--画面内容-->
         <div class="content-box-large min-height">
-          <div class="content-box-large">
-          @b3.form(gui.admin.routes.CourseController.save()) {
-            @CSRF.formField
-            @b3.text( addForm("name"), '_label -> "课程名", 'placeholder -> "课程名" )
-            @b3.submit('class -> "btn btn-default", 'id -> "submit"){ 添加课程 }
-          }
-          </div><!--content-box-large-->
+          <h3>添加选课</h3>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th class="col-sm-1">ID</th>
+                <th>名字</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            @for(course <-courses) {
+              <tr>
+                <input type="hidden" value="@course.getId" disabled="disabled">
+                <td>@course.getId</td>
+                <td>@course.getName</td>
+                <td class="text-right">
+                  <button type="button" class="btn btn-danger"
+                  onClick="location.href='/teacher/course/save/@course.getId'">
+                          选择课程
+                  </button>
+                </td>
+              </tr>
+            }
+            </tbody>
+          </table>
         </div><!--content-box-large min-height-->
       </div><!--col-md-10 -->
     </div><!--row-->

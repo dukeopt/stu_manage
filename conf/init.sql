@@ -1,3 +1,5 @@
 INSERT INTO TEACHER VALUES (1, 'teacher', 'teacher');
 INSERT INTO ADMIN VALUES (1, 'admin', 'admin');
-INSERT INTO STUDENT VALUES (1, 'student', 'stud ent');
+INSERT INTO STUDENT VALUES (1, 'student', 'student');
+INSERT INTO COURSE VALUES (1, '课程1');
+INSERT INTO COURSE_TEACHER VALUES (1, 1, 1);
