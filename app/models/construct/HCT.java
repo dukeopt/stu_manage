@@ -1,9 +1,12 @@
 package models.construct;
 
+import java.util.Date;
 
-public class CT {
+public class HCT {
 
     private long id;
+
+    private String name;
 
     private long courseId;
 
@@ -13,12 +16,22 @@ public class CT {
 
     private String teacherName;
 
+    private Date date;
+
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getCourseId() {
@@ -51,5 +64,13 @@ public class CT {
 
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

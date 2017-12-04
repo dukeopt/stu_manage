@@ -1,0 +1,42 @@
+@(courses: List[Course])
+
+@main(){
+  @views.html.header.render
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2" >
+      @views.html.left.render
+      </div><!--col-md-2 -->
+      <div class="col-md-10">
+          <!--画面内容-->
+        <div class="content-box-large min-height">
+          <h3>添加选课</h3>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th class="col-sm-1">ID</th>
+                <th>名字</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            @for(course <-courses) {
+              <tr>
+                <input type="hidden" value="@course.getId" disabled="disabled">
+                <td>@course.getId</td>
+                <td>@course.getName</td>
+                <td class="text-right">
+                  <button type="button" class="btn btn-danger"
+                  onClick="location.href='/teacher/course/save/@course.getId'">
+                          选择课程
+                  </button>
+                </td>
+              </tr>
+            }
+            </tbody>
+          </table>
+        </div><!--content-box-large min-height-->
+      </div><!--col-md-10 -->
+    </div><!--row-->
+  </div><!--container-fluid-->
+}

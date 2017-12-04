@@ -30,6 +30,14 @@ create table course_teacher (
   constraint pk_course_teacher primary key (id)
 );
 
+create table homework (
+  id                            bigint auto_increment not null,
+  course_tacher_id              bigint not null,
+  name                          varchar(255),
+  date                          datetime(6),
+  constraint pk_homework primary key (id)
+);
+
 create table score (
   id                            bigint auto_increment not null,
   score                         double not null,
@@ -62,6 +70,8 @@ drop table if exists course;
 drop table if exists course_student;
 
 drop table if exists course_teacher;
+
+drop table if exists homework;
 
 drop table if exists score;
 
