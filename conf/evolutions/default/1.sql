@@ -13,6 +13,7 @@ create table admin (
 create table course (
   id                            bigint auto_increment not null,
   name                          varchar(255),
+  vaild                         tinyint(1) default 0,
   constraint pk_course primary key (id)
 );
 
@@ -36,6 +37,7 @@ create table homework (
   name                          varchar(255),
   path                          varchar(255),
   date                          varchar(255),
+  vaild                         tinyint(1) default 0,
   constraint pk_homework primary key (id)
 );
 

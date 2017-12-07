@@ -1,7 +1,5 @@
 package models.construct;
 
-import java.util.Date;
-
 public class HCT {
 
     private long id;

@@ -15,6 +15,8 @@ public class Course extends Model {
 
     private String name;
 
+    private Boolean vaild;
+
     public Long getId() {
         return id;
     }
@@ -31,4 +33,11 @@ public class Course extends Model {
         this.name = name;
     }
 
+    public Boolean getVaild() {
+        return vaild;
+    }
+
+    public void setVaild(Boolean vaild) {
+        this.vaild = vaild;
+    }
 }

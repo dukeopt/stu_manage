@@ -18,6 +18,7 @@ public class CourseController extends Controller {
 
     private FormFactory formFactory;
     private CourseDao courseDao;
+
     @Inject
     public CourseController(FormFactory formFactory,
                             CourseDao courseDao) {

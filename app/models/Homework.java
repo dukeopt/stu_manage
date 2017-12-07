@@ -19,6 +19,8 @@ public class Homework extends Model {
 
     private String date;
 
+    private Boolean vaild;
+
     public long getId() {
         return id;
     }
@@ -57,5 +59,13 @@ public class Homework extends Model {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Boolean getVaild() {
+        return vaild;
+    }
+
+    public void setVaild(Boolean vaild) {
+        this.vaild = vaild;
     }
 }

@@ -11,4 +11,5 @@ libraryDependencies += guice
 libraryDependencies += jdbc
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.39"
 libraryDependencies += "com.adrianhurt" %% "play-bootstrap" % "1.2-P26-B3"
+libraryDependencies += "commons-io" % "commons-io" % "2.6"
 routesGenerator := InjectedRoutesGenerator
