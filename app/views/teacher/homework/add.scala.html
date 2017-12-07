@@ -1,42 +1,82 @@
-@(courses: List[Course])
+@import helper._
+@import models.construct.CT
+@(cts: List[CT])
 
-@main(){
+@main() {
   @views.html.header.render
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2" >
       @views.html.left.render
-      </div><!--col-md-2 -->
+      </div>
       <div class="col-md-10">
           <!--画面内容-->
         <div class="content-box-large min-height">
-          <h3>添加选课</h3>
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th class="col-sm-1">ID</th>
-                <th>名字</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-            @for(course <-courses) {
-              <tr>
-                <input type="hidden" value="@course.getId" disabled="disabled">
-                <td>@course.getId</td>
-                <td>@course.getName</td>
-                <td class="text-right">
-                  <button type="button" class="btn btn-danger"
-                  onClick="location.href='/teacher/course/save/@course.getId'">
-                          选择课程
+          <div class="content-box-large">
+            <form class="form-horizontal" enctype="multipart/form-data" action="/teacher/homework/save/"
+            name="putupFrom" method="post" onSubmit="return submitClick();">
+              @CSRF.formField
+              <div class="form-group">
+                <label class="col-sm-2 control-label">选择课程<br></label>
+                <div class="col-sm-3">
+                  <select class="form-control" name="course" id="course">
+                    @for(ct <- cts) {
+                      <option value=@ct.getId>@ct.getCourseName</option>
+                    }
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">作业名字<br></label>
+                <div class="col-sm-3">
+                  <input class="form-control" name="itemName" id="itemName" placeholder="作业名字" required="required">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">上传作业文件<br></label>
+                <div class="col-sm-3">
+                  <div class="input-group">
+                    <input type="file" id="file_input" name="file_input" style="display: none;">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button" onclick="$('#file_input').click();">
+                        <i class="glyphicon glyphicon-folder-open"></i>
+                      </button>
+                    </span>
+                    <input id="dummy_file" name="dummy_file" type="text" class="form-control"
+                    placeholder="select file..." disabled>
+                    <script type="text/javascript">
+                            $(function () {
+                              $('#file_input').change(function () {
+                                $('#dummy_file').val($(this).val());
+                                $("#error").html("");
+                              });
+                            });
+
+                            function submitClick() {
+                              if (!$("#file_input").val()) {
+                                $("#error").html("<span class='text-danger'><h4><b>请上传作业文件</b></h4></span>");
+                                return false;
+                              }
+                              $('#putupFrom').submit();
+                            }
+                    </script>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-5">
+                  <button type="submit" name="submit" id="submit" class="btn btn-primary"
+                  data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> 上传中...">
+                    作业提交
                   </button>
-                </td>
-              </tr>
-            }
-            </tbody>
-          </table>
+                  <div id="error"></div>
+                </div><!-- col-sm-3 -->
+              </div>
+            </form>
+          </div><!--content-box-large-->
         </div><!--content-box-large min-height-->
       </div><!--col-md-10 -->
     </div><!--row-->
-  </div><!--container-fluid-->
+  </div>
 }

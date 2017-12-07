@@ -14,6 +14,11 @@ public class CourseTeacherDao {
 
     public static final Finder<Long, CourseTeacher> find = new Finder<>(CourseTeacher.class);
 
+    /**
+     * 教师已经选择的课程
+     * @param tId
+     * @return
+     */
     public List<CT> optList(long tId) {
         String sql = " SELECT CT.ID AS CT_ID, C.ID AS C_ID, C.NAME AS C_NAME, T.ID AS T_ID, T.NAME AS T_NAME " +
                 " FROM COURSE_TEACHER CT " +
@@ -37,6 +42,11 @@ public class CourseTeacherDao {
         return cts;
     }
 
+    /**
+     * 教师还未经选择的课程
+     * @param tId
+     * @return
+     */
     public List<Course> list(long tId) {
         String sql = " SELECT C.ID AS C_ID, C.NAME AS C_NAME " +
                 " FROM COURSE C " +

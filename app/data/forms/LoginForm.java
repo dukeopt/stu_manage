@@ -61,13 +61,6 @@ public class LoginForm implements Validatable<List<ValidationError>> {
                     session().put("id", String.valueOf(person.getId()));
                     session().put("name", String.valueOf(person.getName()));
                     session().put("type", type);
-
-
-                    System.out.println("---------------------");
-                    System.out.println(person.getId());
-                    System.out.println(person.getName());
-                    System.out.println(session().get("id"));
-                    System.out.println("---------------------");
                 }
             }
         }

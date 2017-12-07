@@ -32,9 +32,10 @@ create table course_teacher (
 
 create table homework (
   id                            bigint auto_increment not null,
-  course_tacher_id              bigint not null,
+  course_teacher_id             bigint not null,
   name                          varchar(255),
-  date                          datetime(6),
+  path                          varchar(255),
+  date                          varchar(255),
   constraint pk_homework primary key (id)
 );
 

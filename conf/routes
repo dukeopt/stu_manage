@@ -29,6 +29,11 @@ GET     /teacher/course/add             controllers.gui.teacher.CourseController
 GET     /teacher/course/save/:cId       controllers.gui.teacher.CourseController.save(cId: Long)
 GET     /teacher/course/del/:cId        controllers.gui.teacher.CourseController.del(cId: Long)
 
+GET     /teacher/homework/list            controllers.gui.teacher.HomeworkController.list
+GET     /teacher/homework/add             controllers.gui.teacher.HomeworkController.add
+POST     /teacher/homework/save/           controllers.gui.teacher.HomeworkController.save
+GET     /teacher/homework/del/:cId        controllers.gui.teacher.HomeworkController.del(cId: Long)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)

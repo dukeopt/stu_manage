@@ -1,5 +1,5 @@
-@import models.construct.CT
-@(cts: List[CT])
+@import models.construct.HCT
+@(hcts: List[HCT])
 
 @main(){
   @views.html.header.render
@@ -14,7 +14,7 @@
           <div class="content-box-large">
               <div class="col-sm-12">
                 <button type="button" class="btn btn-primary pull-right"
-                onClick="location.href='/teacher/course/add'">
+                onClick="location.href='/teacher/homework/add'">
                   布置作业
                 </button>
               </div>
@@ -32,16 +32,23 @@
                   </tr>
                 </thead>
                 <tbody>
-                @for(ct <-cts) {
+                @for(hct <-hcts) {
                   <tr>
-                    <input type="hidden" value="@ct.getId" disabled="disabled">
-                    <td>@ct.getTeacherId</td>
-                    <td>@ct.getTeacherName</td>
-                    <td>@ct.getCourseId</td>
-                    <td>@ct.getCourseName</td>
+                    <input type="hidden" value="@hct.getId" disabled="disabled">
+                    <td>@hct.getTeacherId</td>
+                    <td>@hct.getTeacherName</td>
+                    <td>@hct.getCourseId</td>
+                    <td>@hct.getCourseName</td>
+                    <td>@hct.getId</td>
+                    <td>@hct.getName</td>
+                    <td>@hct.getDate</td>
                     <td class="text-right">
+                      <button type="button" class="btn btn-warning"
+                      onClick="location.href='/teacher/homework/download/@hct.getId'">
+                        作业下载
+                      </button>
                       <button type="button" class="btn btn-danger"
-                      onClick="location.href='/teacher/course/del/@ct.getId'">
+                      onClick="location.href='/teacher/homework/del/@hct.getId'">
                           删除
                       </button>
                     </td>

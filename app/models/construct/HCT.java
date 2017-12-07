@@ -16,7 +16,9 @@ public class HCT {
 
     private String teacherName;
 
-    private Date date;
+    private String date;
+
+    private String path;
 
     public long getId() {
         return id;
@@ -66,11 +68,19 @@ public class HCT {
         this.teacherName = teacherName;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
