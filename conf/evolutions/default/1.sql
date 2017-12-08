@@ -45,7 +45,7 @@ create table score (
   id                            bigint auto_increment not null,
   score                         double not null,
   student_id                    bigint not null,
-  course_id                     bigint not null,
+  homework_id                   bigint not null,
   constraint pk_score primary key (id)
 );
 

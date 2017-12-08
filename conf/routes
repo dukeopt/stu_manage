@@ -3,36 +3,37 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                        controllers.LoginController.index
-GET     /login                   controllers.LoginController.index
-POST    /login                   controllers.LoginController.login
-GET     /logout                  controllers.LogoutController.logout
+GET     /                                     controllers.LoginController.index
+GET     /login                                controllers.LoginController.index
+POST    /login                                controllers.LoginController.login
+GET     /logout                               controllers.LogoutController.logout
 
-GET     /student                 controllers.StudentController.index
-GET     /teacher                 controllers.gui.admin.TeacherController.index
-GET     /admin                   controllers.AdminController.index
+GET     /student                              controllers.StudentController.index
+GET     /teacher                              controllers.gui.admin.TeacherController.index
+GET     /admin                                controllers.AdminController.index
 
-GET     /admin/course/list             controllers.gui.admin.CourseController.list
-GET     /admin/course/add              controllers.gui.admin.CourseController.add
-POST    /admin/course/save             controllers.gui.admin.CourseController.save
-GET     /admin/course/del/:id          controllers.gui.admin.CourseController.delete(id: Long)
+GET     /admin/course/list                    controllers.gui.admin.CourseController.list
+GET     /admin/course/add                     controllers.gui.admin.CourseController.add
+POST    /admin/course/save                    controllers.gui.admin.CourseController.save
+GET     /admin/course/del/:id                 controllers.gui.admin.CourseController.delete(id: Long)
 
-GET     /admin/teacher/list            controllers.gui.admin.TeacherController.list
-GET     /admin/teacher/add             controllers.gui.admin.TeacherController.add
-POST    /admin/teacher/save            controllers.gui.admin.TeacherController.save
-GET     /admin/teacher/edit/:id        controllers.gui.admin.TeacherController.edit(id: Long)
-POST    /admin/teacher/update          controllers.gui.admin.TeacherController.update
-GET     /admin/teacher/del/:id         controllers.gui.admin.TeacherController.delete(id: Long)
+GET     /admin/teacher/list                   controllers.gui.admin.TeacherController.list
+GET     /admin/teacher/add                    controllers.gui.admin.TeacherController.add
+POST    /admin/teacher/save                   controllers.gui.admin.TeacherController.save
+GET     /admin/teacher/edit/:id               controllers.gui.admin.TeacherController.edit(id: Long)
+POST    /admin/teacher/update                 controllers.gui.admin.TeacherController.update
+GET     /admin/teacher/del/:id                controllers.gui.admin.TeacherController.delete(id: Long)
 
-GET     /teacher/course/list            controllers.gui.teacher.CourseController.list
-GET     /teacher/course/add             controllers.gui.teacher.CourseController.add
-GET     /teacher/course/save/:cId       controllers.gui.teacher.CourseController.save(cId: Long)
-GET     /teacher/course/del/:cId        controllers.gui.teacher.CourseController.del(cId: Long)
+GET     /teacher/course/list                  controllers.gui.teacher.CourseController.list
+GET     /teacher/course/add                   controllers.gui.teacher.CourseController.add
+GET     /teacher/course/save/:cId             controllers.gui.teacher.CourseController.save(cId: Long)
+GET     /teacher/course/del/:cId              controllers.gui.teacher.CourseController.del(cId: Long)
 
-GET     /teacher/homework/list            controllers.gui.teacher.HomeworkController.list
-GET     /teacher/homework/add             controllers.gui.teacher.HomeworkController.add
-POST     /teacher/homework/save/           controllers.gui.teacher.HomeworkController.save
-GET     /teacher/homework/del/:cId        controllers.gui.teacher.HomeworkController.del(cId: Long)
+GET     /teacher/homework/list                controllers.gui.teacher.HomeworkController.list
+GET     /teacher/homework/add                 controllers.gui.teacher.HomeworkController.add
+POST    /teacher/homework/save/               controllers.gui.teacher.HomeworkController.save
+GET     /teacher/homework/download/:id        controllers.gui.teacher.HomeworkController.download(id: Long)
+GET     /teacher/homework/del/:id             controllers.gui.teacher.HomeworkController.del(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path

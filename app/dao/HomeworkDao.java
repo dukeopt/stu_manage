@@ -42,6 +42,10 @@ public class HomeworkDao {
         return hcts;
     }
 
+    public Homework findById(long id) {
+        return find.byId(id);
+    }
+
     public void delete(long id) {
         find.deleteById(id);
     }

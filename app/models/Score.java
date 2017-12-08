@@ -17,7 +17,7 @@ public class Score extends Model {
 
     private long studentId;
 
-    private long courseId;
+    private long homeworkId;
 
     public long getId() {
         return id;
@@ -43,11 +43,11 @@ public class Score extends Model {
         this.studentId = studentId;
     }
 
-    public long getCourseId() {
-        return courseId;
+    public long getHomeworkId() {
+        return homeworkId;
     }
 
-    public void setCourseId(long courseId) {
-        this.courseId = courseId;
+    public void setHomeworkId(long homeworkId) {
+        this.homeworkId = homeworkId;
     }
 }
