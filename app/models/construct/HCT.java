@@ -1,5 +1,8 @@
 package models.construct;
 
+/**
+ * 课程 教师 作业
+ */
 public class HCT {
 
     private long id;

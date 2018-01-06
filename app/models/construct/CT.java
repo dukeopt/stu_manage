@@ -1,6 +1,8 @@
 package models.construct;
 
-
+/**
+ * 课程 教师
+ */
 public class CT {
 
     private long id;

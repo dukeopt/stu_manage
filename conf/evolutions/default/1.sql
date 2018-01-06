@@ -44,6 +44,7 @@ create table homework (
 create table score (
   id                            bigint auto_increment not null,
   score                         double not null,
+  student_homework_path         varchar(255),
   student_id                    bigint not null,
   homework_id                   bigint not null,
   constraint pk_score primary key (id)

@@ -15,6 +15,8 @@ public class Score extends Model {
 
     private double score;
 
+    private String studentHomeworkPath;
+
     private long studentId;
 
     private long homeworkId;
@@ -50,4 +52,13 @@ public class Score extends Model {
     public void setHomeworkId(long homeworkId) {
         this.homeworkId = homeworkId;
     }
+
+    public String getStudentHomeworkPath() {
+        return studentHomeworkPath;
+    }
+
+    public void setStudentHomeworkPath(String studentHomeworkPath) {
+        this.studentHomeworkPath = studentHomeworkPath;
+    }
+
 }
