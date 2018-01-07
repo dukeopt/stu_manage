@@ -7,7 +7,7 @@ public class HS {
 
     private long id;
 
-    private double score;
+    private Double score;
 
     private long courseId;
 
@@ -37,11 +37,11 @@ public class HS {
         this.id = id;
     }
 
-    public double getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 

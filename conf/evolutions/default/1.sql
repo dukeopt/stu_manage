@@ -37,13 +37,12 @@ create table homework (
   name                          varchar(255),
   path                          varchar(255),
   date                          varchar(255),
-  vaild                         tinyint(1) default 0,
   constraint pk_homework primary key (id)
 );
 
 create table score (
   id                            bigint auto_increment not null,
-  score                         double not null,
+  score                         double,
   student_homework_path         varchar(255),
   student_id                    bigint not null,
   homework_id                   bigint not null,

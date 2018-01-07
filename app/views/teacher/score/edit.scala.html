@@ -1,0 +1,30 @@
+@import helper._
+@import b3.vertical.fieldConstructor
+@import data.forms.score.EditForm
+@(editForm: Form[EditForm])
+
+@main(){
+  @views.html.header.render
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2" >
+      @views.html.left.render
+      </div><!--col-md-2 -->
+      <div class="col-md-10">
+          <!--画面内容-->
+        <div class="content-box-large min-height">
+          <div class="content-box-large">
+          @b3.form(gui.teacher.routes.ScoreController.update()) {
+            @CSRF.formField
+            @b3.hidden( editForm("id"), 'id -> "id", 'value -> editForm("id"))
+            @b3.text( editForm("score"), '_label -> "成绩", 'placeholder -> "成绩", 'value -> editForm("score"))
+            @b3.text( editForm("studentId"), '_label -> "学生id", 'readonly -> "readonly", 'value -> editForm("studentId"))
+            @b3.text( editForm("homeworkId"), '_label -> "作业id", 'readonly -> "readonly", 'value -> editForm("homeworkId"))
+            @b3.submit('class -> "btn btn-default", 'id -> "submit"){ 修改成绩 }
+          }
+          </div><!--content-box-large-->
+        </div><!--content-box-large min-height-->
+      </div><!--col-md-10 -->
+    </div><!--row-->
+  </div><!--container-fluid-->
+}

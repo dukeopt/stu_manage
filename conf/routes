@@ -39,6 +39,8 @@ GET     /teacher/score/list                   controllers.gui.teacher.ScoreContr
 GET     /teacher/score/homework/list/:cId     controllers.gui.teacher.ScoreController.homeworklist(cId: Long)
 GET     /teacher/score/search/:cId/:hId       controllers.gui.teacher.ScoreController.search(cId: Long, hId: Long)
 GET     /teacher/score/download/:id           controllers.gui.teacher.ScoreController.download(id: Long)
+GET     /teacher/score/edit/:id               controllers.gui.teacher.ScoreController.edit(id: Long)
+POST    /teacher/score/update                 controllers.gui.teacher.ScoreController.update
 #GET     /teacher/score/add                    controllers.gui.teacher.ScoreController.add
 #POST    /teacher/score/save                   controllers.gui.teacher.ScoreController.save
 #GET     /teacher/score/edit/:id               controllers.gui.teacher.ScoreController.edit(id: Long)
