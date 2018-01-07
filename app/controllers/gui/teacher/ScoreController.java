@@ -2,6 +2,7 @@ package controllers.gui.teacher;
 
 import dao.HomeworkDao;
 import dao.ScoreDao;
+import models.Score;
 import models.construct.HCT;
 import models.construct.HS;
 import play.data.FormFactory;
@@ -10,6 +11,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.inject.Inject;
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +46,12 @@ public class ScoreController extends Controller {
         Map<Long, List<HCT>> hctMap = homeworkDao.map(tId);
         List<HS> homeworkScores = scoreDao.list(tId, cId, hId);
         return ok(views.html.teacher.score.list.render(hctMap, homeworkScores));
+    }
+
+    public Result download(long id) {
+        Score score = scoreDao.findById(id);
+        File file = new File("public/" + score.getStudentHomeworkPath());
+        return ok(file , /*inline = */false);
     }
 
 //    public Result add() {

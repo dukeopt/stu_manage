@@ -84,7 +84,7 @@ public class HomeworkController extends Controller {
 
     public Result download(long id) {
         Homework homework = homeworkDao.findById(id);
-        File file = new File(homework.getPath());
+        File file = new File("public/" + homework.getPath());
         return ok(file , /*inline = */false);
     }
 

@@ -58,4 +58,8 @@ public class ScoreDao {
 
         return homeworkScores;
     }
+
+    public Score findById(long id) {
+        return find.byId(id);
+    }
 }
