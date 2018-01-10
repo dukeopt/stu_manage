@@ -20,8 +20,7 @@ public class TeacherController extends Controller {
 
     @Inject
     public TeacherController(FormFactory formFactory,
-                            TeacherDao teacherDao,
-                            CourseTeacherDao ctDao) {
+                            TeacherDao teacherDao) {
         this.formFactory = formFactory;
         this.teacherDao = teacherDao;
     }

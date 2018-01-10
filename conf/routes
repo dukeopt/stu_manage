@@ -51,8 +51,11 @@ POST    /teacher/score/update                 controllers.gui.teacher.ScoreContr
 GET     /teacher/score/add                    controllers.gui.teacher.ScoreController.add
 GET     /teacher/score/add/search/:cId/:hId   controllers.gui.teacher.ScoreController.addSearch(cId: Long, hId: Long)
 POST    /teacher/score/save                   controllers.gui.teacher.ScoreController.save
-#GET     /teacher/score/edit/:id               controllers.gui.teacher.ScoreController.edit(id: Long)
-#POST    /teacher/score/update                 controllers.gui.teacher.ScoreController.update
+
+GET     /student/course/list                  controllers.gui.student.CourseController.list
+GET     /student/course/add                   controllers.gui.student.CourseController.add
+GET     /student/course/save/:cId             controllers.gui.student.CourseController.save(cId: Long)
+GET     /student/course/del/:cId              controllers.gui.student.CourseController.del(cId: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path

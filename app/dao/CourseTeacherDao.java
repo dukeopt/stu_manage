@@ -22,8 +22,8 @@ public class CourseTeacherDao {
     public List<CT> optList(long tId) {
         String sql = " SELECT CT.ID AS CT_ID, C.ID AS C_ID, C.NAME AS C_NAME, T.ID AS T_ID, T.NAME AS T_NAME " +
                 " FROM COURSE_TEACHER CT " +
-                " LEFT JOIN COURSE C ON CT.COURSE_ID = C.ID" +
-                " LEFT JOIN TEACHER T ON CT.TEACHER_ID = T.ID " +
+                " INNER JOIN COURSE C ON CT.COURSE_ID = C.ID" +
+                " INNER JOIN TEACHER T ON CT.TEACHER_ID = T.ID " +
                 " WHERE T.ID = " + tId;
 
         List<SqlRow> rows = Ebean.createSqlQuery(sql).findList();

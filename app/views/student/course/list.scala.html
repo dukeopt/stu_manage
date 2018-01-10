@@ -1,0 +1,54 @@
+@import models.construct.CS
+@(csList: List[CS])
+
+@main(){
+  @views.html.header.render
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2" >
+      @views.html.left.render
+      </div><!--col-md-2 -->
+      <div class="col-md-10">
+          <!--画面内容-->
+        <div class="content-box-large min-height">
+          <div class="content-box-large">
+              <div class="col-sm-12">
+                <button type="button" class="btn btn-primary pull-right"
+                onClick="location.href='/student/course/add'">
+                  追加选课
+                </button>
+              </div>
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th class="col-sm-1">学生ID</th>
+                    <th>学生名字</th>
+                    <th class="col-sm-1">课程ID</th>
+                    <th>课程名字</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                @for(cs <-csList) {
+                  <tr>
+                    <input type="hidden" value="@cs.getId" disabled="disabled">
+                    <td>@cs.getStudentId</td>
+                    <td>@cs.getStudentName</td>
+                    <td>@cs.getCourseId</td>
+                    <td>@cs.getCourseName</td>
+                    <td class="text-right">
+                      <button type="button" class="btn btn-danger"
+                      onClick="location.href='/student/course/del/@cs.getId'">
+                          删除
+                      </button>
+                    </td>
+                  </tr>
+                }
+                </tbody>
+              </table>
+          </div><!--content-box-large-->
+        </div><!--content-box-large min-height-->
+      </div><!--col-md-10 -->
+    </div><!--row-->
+  </div><!--container-fluid-->
+}

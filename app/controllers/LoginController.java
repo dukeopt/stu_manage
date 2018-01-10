@@ -32,7 +32,7 @@ public class LoginController extends Controller {
         } else {
             LoginForm loginForm = formData.get();
             if(loginForm.type.equals("student")) {
-                return redirect("/student/");
+                return redirect("/student");
             } else if (loginForm.type.equals("teacher")) {
                 return redirect("/teacher");
             } else if (loginForm.type.equals("admin")) {
