@@ -81,19 +81,30 @@ public class ScoreController extends Controller {
         }
     }
 
-//    public Result add() {
-//        List<Course> courses = ctDao.list(Long.parseLong(session().get("id")));
-//        return ok(views.html.teacher.course.add.render(courses));
-//    }
-//
-//    public Result save(long cId) {
-//        long tId = Long.parseLong(session().get("id"));
-//        CourseTeacher ct = new CourseTeacher();
-//        ct.setTeacherId(tId);
-//        ct.setCourseId(cId);
-//        ct.save();
-//        return redirect("/teacher/course/list");
-//    }
+    public Result add() {
+        long tId =  Long.parseLong(session().get("id"));
+        Map<Long, List<HCT>> hctMap = homeworkDao.map(tId);
+        List<HS> homeworkScores = scoreDao.noScorelist(tId, -1,-1);
+        return ok(views.html.teacher.score.add.render(hctMap, homeworkScores));
+    }
 
+    public Result addSearch(long cId, long hId) {
+        long tId =  Long.parseLong(session().get("id"));
+        Map<Long, List<HCT>> hctMap = homeworkDao.map(tId);
+        List<HS> homeworkScores = scoreDao.noScorelist(tId, cId, hId);
+        return ok(views.html.teacher.score.add.render(hctMap, homeworkScores));
+    }
 
+    public Result save() {
+        Map<String, String[]> data = request().body().asFormUrlEncoded();
+        int cnt = data.get("itemId").length;
+        for (int i = 0; i < cnt; i++) {
+            long id = Long.parseLong(data.get("itemId")[i]);
+            double scoreD = Double.parseDouble(data.get("score")[i]);
+            Score score = scoreDao.findById(id);
+            score.setScore(scoreD);
+            score.save();
+        }
+        return redirect("/teacher/score/list");
+    }
 }

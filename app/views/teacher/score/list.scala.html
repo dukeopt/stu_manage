@@ -15,7 +15,6 @@
         <div class="content-box-large min-height">
           <div class="content-box-large">
             <form id="srchForm" class="form-horizontal" method="get">
-              @CSRF.formField
               <div class="row">
                 <div class="col-sm-4 form-group">
                   <label class="col-sm-5 control-label">选择课程<br></label>
@@ -64,18 +63,16 @@
                 }
               });
 
-//              $('#homework').change(function () {
-//                if ($(this).val() == -1 || $(this).val() == null) {
-//                  $("#search").attr("disabled", "disabled");
-//                } else {
-//                  $("#search").removeAttr("disabled");
-//                }
-//              });
-
               function srchSubmit() {
                 var courseId = $("#course").val();
                 var homeworkId = $("#homework").val();
-                $("#submitForm").attr("action", "/teacher/score/search/" + courseId + "/" + homeworkId);
+                if (courseId == null) {
+                  courseId = -1
+                }
+                if (homeworkId == null) {
+                  homeworkId = -1
+                }
+                $("#srchForm").attr("action", "/teacher/score/search/" + courseId + "/" + homeworkId);
                 $("#srchForm").submit();
               }
           </script>
@@ -85,6 +82,7 @@
                 <table class="table table-striped table-hover">
                   <thead>
                     <tr>
+                      <th class="col-sm-1">学生作业ID</th>
                       <th class="col-sm-1">课程ID</th>
                       <th>课程名字</th>
                       <th class="col-sm-1">作业ID</th>
@@ -99,6 +97,7 @@
                   @for(hs <- homeworkScores) {
                     <tr>
                       <input type="hidden" value="@hs.getId" disabled="disabled">
+                      <td>@hs.getId</td>
                       <td>@hs.getCourseId</td>
                       <td>@hs.getCourseName</td>
                       <td>@hs.getHomeworkId</td>

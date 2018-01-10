@@ -41,8 +41,9 @@ GET     /teacher/score/search/:cId/:hId       controllers.gui.teacher.ScoreContr
 GET     /teacher/score/download/:id           controllers.gui.teacher.ScoreController.download(id: Long)
 GET     /teacher/score/edit/:id               controllers.gui.teacher.ScoreController.edit(id: Long)
 POST    /teacher/score/update                 controllers.gui.teacher.ScoreController.update
-#GET     /teacher/score/add                    controllers.gui.teacher.ScoreController.add
-#POST    /teacher/score/save                   controllers.gui.teacher.ScoreController.save
+GET     /teacher/score/add                    controllers.gui.teacher.ScoreController.add
+GET     /teacher/score/add/search/:cId/:hId   controllers.gui.teacher.ScoreController.addSearch(cId: Long, hId: Long)
+POST    /teacher/score/save                   controllers.gui.teacher.ScoreController.save
 #GET     /teacher/score/edit/:id               controllers.gui.teacher.ScoreController.edit(id: Long)
 #POST    /teacher/score/update                 controllers.gui.teacher.ScoreController.update
 

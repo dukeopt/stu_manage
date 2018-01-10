@@ -15,11 +15,31 @@ public class ScoreDao {
 
     /**
      * 根据作业id查询出所有学生的成绩
+     * @param tId
+     * @param cId
      * @param hId
      * @return
      */
     public List<HS> list(long tId, long cId, long hId) {
 
+        String sql = createSql(tId, cId, hId, true);
+        return getList(sql);
+    }
+
+    /**
+     * 根据作业id查询出所有学生的信息(成绩== null)
+     * @param tId
+     * @param cId
+     * @param hId
+     * @return
+     */
+    public List<HS> noScorelist(long tId, long cId, long hId) {
+
+        String sql = createSql(tId, cId, hId, false);
+        return getList(sql);
+    }
+
+    private String createSql (long tId, long cId, long hId, boolean hasScore) {
         String sql = " SELECT SC.ID AS SC_ID, SC.SCORE AS SCORE, STUDENT_HOMEWORK_PATH AS PATH, " +
                 "        H.ID AS H_ID, H.NAME AS H_NAME, ST.ID AS ST_ID, ST.NAME AS ST_NAME," +
                 "        C.ID AS C_ID, C.NAME AS C_NAME " +
@@ -38,7 +58,15 @@ public class ScoreDao {
         if (hId != -1) {
             sql +=  " AND H.ID = " + hId;
         }
+
+        if (!hasScore) {
+            sql +=  " AND SC.SCORE IS NULL";
+        }
         sql += " ORDER BY SC.SCORE";
+        return sql;
+    }
+
+    private List<HS> getList(String sql) {
         List<SqlRow> rows = Ebean.createSqlQuery(sql).findList();
         List<HS> homeworkScores = new ArrayList<>();
 
