@@ -22,7 +22,7 @@
                   <tr>
                     <th class="col-sm-1">ID</th>
                     <th>名字</th>
-                    <th></th>
+                    @*<th></th>*@
                   </tr>
                 </thead>
                 <tbody>
@@ -31,12 +31,12 @@
                     <input type="hidden" value="@course.getId" disabled="disabled">
                     <td>@course.getId</td>
                     <td>@course.getName</td>
-                    <td class="text-right">
-                      <button type="button" class="btn btn-danger"
-                      onClick="location.href='/admin/course/del/@course.getId'">
-                          删除
-                      </button>
-                    </td>
+                    @*<td class="text-right">*@
+                      @*<button type="button" class="btn btn-danger"*@
+                      @*onClick="location.href='/admin/course/del/@course.getId'">*@
+                          @*删除*@
+                      @*</button>*@
+                    @*</td>*@
                   </tr>
                 }
                 </tbody>

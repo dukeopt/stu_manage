@@ -1,4 +1,4 @@
-@(teachers: List[Teacher])
+@(students: List[Student])
 
 @main(){
   @views.html.header.render
@@ -13,7 +13,7 @@
           <div class="content-box-large">
               <div class="col-sm-12">
                 <button type="button" class="btn btn-primary pull-right"
-                onClick="location.href='/admin/teacher/add'">
+                onClick="location.href='/admin/student/add'">
                   追加
                 </button>
               </div>
@@ -26,18 +26,18 @@
                   </tr>
                 </thead>
                 <tbody>
-                @for(teacher <-teachers) {
+                @for(student <-students) {
                   <tr>
-                    <input type="hidden" value="@teacher.getId" disabled="disabled">
-                    <td>@teacher.getId</td>
-                    <td>@teacher.getName</td>
+                    <input type="hidden" value="@student.getId" disabled="disabled">
+                    <td>@student.getId</td>
+                    <td>@student.getName</td>
                     <td class="text-right">
                       <button type="button" class="btn btn-warning"
-                      onClick="location.href='/admin/teacher/edit/@teacher.getId'">
+                      onClick="location.href='/admin/student/edit/@student.getId'">
                         修改密码
                       </button>
                       @*<button type="button" class="btn btn-danger"*@
-                      @*onClick="location.href='/admin/teacher/del/@course.getId'">*@
+                      @*onClick="location.href='/admin/student/del/@course.getId'">*@
                           @*删除*@
                       @*</button>*@
                     </td>

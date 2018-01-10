@@ -24,6 +24,13 @@ GET     /admin/teacher/edit/:id               controllers.gui.admin.TeacherContr
 POST    /admin/teacher/update                 controllers.gui.admin.TeacherController.update
 GET     /admin/teacher/del/:id                controllers.gui.admin.TeacherController.delete(id: Long)
 
+GET     /admin/student/list                   controllers.gui.admin.StudentController.list
+GET     /admin/student/add                    controllers.gui.admin.StudentController.add
+POST    /admin/student/save                   controllers.gui.admin.StudentController.save
+GET     /admin/student/edit/:id               controllers.gui.admin.StudentController.edit(id: Long)
+POST    /admin/student/update                 controllers.gui.admin.StudentController.update
+GET     /admin/student/del/:id                controllers.gui.admin.TeacherController.delete(id: Long)
+
 GET     /teacher/course/list                  controllers.gui.teacher.CourseController.list
 GET     /teacher/course/add                   controllers.gui.teacher.CourseController.add
 GET     /teacher/course/save/:cId             controllers.gui.teacher.CourseController.save(cId: Long)
