@@ -25,7 +25,7 @@
                     <th>教师名字</th>
                     <th class="col-sm-1">课程ID</th>
                     <th>课程名字</th>
-                    <th></th>
+                    @*<th></th>*@
                   </tr>
                 </thead>
                 <tbody>
@@ -36,12 +36,12 @@
                     <td>@ct.getTeacherName</td>
                     <td>@ct.getCourseId</td>
                     <td>@ct.getCourseName</td>
-                    <td class="text-right">
-                      <button type="button" class="btn btn-danger"
-                      onClick="location.href='/teacher/course/del/@ct.getId'">
-                          删除
-                      </button>
-                    </td>
+                    @*<td class="text-right">*@
+                      @*<button type="button" class="btn btn-danger"*@
+                      @*onClick="location.href='/teacher/course/del/@ct.getId'">*@
+                          @*删除*@
+                      @*</button>*@
+                    @*</td>*@
                   </tr>
                 }
                 </tbody>

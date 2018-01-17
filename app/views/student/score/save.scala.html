@@ -1,6 +1,6 @@
 @import helper._
 @import models.construct.CT
-@(cts: List[CT])
+@(hId: Long, hName: String)
 
 @main() {
   @views.html.header.render
@@ -13,23 +13,20 @@
           <!--画面内容-->
         <div class="content-box-large min-height">
           <div class="content-box-large">
-            <form class="form-horizontal" enctype="multipart/form-data" action="/teacher/homework/save"
+            <form class="form-horizontal" enctype="multipart/form-data" action="/student/score/save"
             name="putupFrom" method="post" onSubmit="return submitClick();">
               @CSRF.formField
               <div class="form-group">
-                <label class="col-sm-2 control-label">选择课程<br></label>
+                <label class="col-sm-2 control-label">教师作业ID<br></label>
                 <div class="col-sm-3">
-                  <select class="form-control" name="course" id="course">
-                    @for(ct <- cts) {
-                      <option value=@ct.getId>@ct.getCourseName</option>
-                    }
-                  </select>
+                  <input class="form-control" name="hId" id="hId" value="@hId" type="hidden">
+                  <input class="form-control" value="@hId" disabled="disabled">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">作业名字<br></label>
+                <label class="col-sm-2 control-label">教师作业名字<br></label>
                 <div class="col-sm-3">
-                  <input class="form-control" name="name" id="name" placeholder="作业名字" required="required">
+                  <input class="form-control" name="hname" id="hname" value="@hName" disabled="disabled">
                 </div>
               </div>
               <div class="form-group">

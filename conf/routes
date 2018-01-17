@@ -8,9 +8,9 @@ GET     /login                                controllers.LoginController.index
 POST    /login                                controllers.LoginController.login
 GET     /logout                               controllers.LogoutController.logout
 
-GET     /student                              controllers.StudentController.index
-GET     /teacher                              controllers.gui.admin.TeacherController.index
-GET     /admin                                controllers.AdminController.index
+GET     /student                              controllers.gui.student.CourseController.list
+GET     /teacher                              controllers.gui.teacher.CourseController.list
+GET     /admin                                controllers.gui.admin.StudentController.list
 
 GET     /admin/course/list                    controllers.gui.admin.CourseController.list
 GET     /admin/course/add                     controllers.gui.admin.CourseController.add
@@ -38,7 +38,7 @@ GET     /teacher/course/del/:cId              controllers.gui.teacher.CourseCont
 
 GET     /teacher/homework/list                controllers.gui.teacher.HomeworkController.list
 GET     /teacher/homework/add                 controllers.gui.teacher.HomeworkController.add
-POST    /teacher/homework/save/               controllers.gui.teacher.HomeworkController.save
+POST    /teacher/homework/save                controllers.gui.teacher.HomeworkController.save
 GET     /teacher/homework/download/:id        controllers.gui.teacher.HomeworkController.download(id: Long)
 GET     /teacher/homework/del/:id             controllers.gui.teacher.HomeworkController.del(id: Long)
 
@@ -57,6 +57,13 @@ GET     /student/course/add                   controllers.gui.student.CourseCont
 GET     /student/course/save/:cId             controllers.gui.student.CourseController.save(cId: Long)
 GET     /student/course/del/:cId              controllers.gui.student.CourseController.del(cId: Long)
 
+GET     /student/score/list                   controllers.gui.student.ScoreController.list
+GET     /student/score/search/:cId/:hId       controllers.gui.student.ScoreController.search(cId: Long, hId: Long)
+GET     /student/score/add                    controllers.gui.student.ScoreController.add
+GET     /student/score/add/search/:cId/:hId   controllers.gui.student.ScoreController.addSearch(cId: Long, hId: Long)
+GET     /student/score/add/init/:hId/:hName   controllers.gui.student.ScoreController.addInit(hId: Long, hName: String)
+POST    /student/score/save                   controllers.gui.student.ScoreController.save
+GET     /student/score/download/:id           controllers.gui.student.ScoreController.download(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)

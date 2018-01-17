@@ -12,6 +12,10 @@ INSERT INTO `course` (`id`, `name`, `vaild`)
 UNLOCK TABLES;
 
 LOCK TABLES `course_student` WRITE;
+INSERT INTO `course_student` (`id`, `course_id`, `student_id`)
+VALUES
+  (1,1,1),
+  (2,1,2);
 UNLOCK TABLES;
 
 LOCK TABLES `course_teacher` WRITE;
