@@ -31,20 +31,20 @@ public class ScoreController extends Controller {
     }
 
     public Result list() {
-        long tId =  Long.parseLong(session().get("id"));
+        long tId =  Long.parseLong(session().get("tid"));
         Map<Long, List<HCT>> hctMap = homeworkDao.map(tId);
         List<HS> homeworkScores = scoreDao.list(tId, -1,-1);
         return ok(views.html.teacher.score.list.render(hctMap, homeworkScores));
     }
 
     public Result homeworklist(Long cId) {
-        long tId =  Long.parseLong(session().get("id"));
+        long tId =  Long.parseLong(session().get("tid"));
         Map<Long, List<HCT>> hctMap = homeworkDao.map(tId);
         return ok(Json.toJson(hctMap.get(cId)));
     }
 
     public Result search(long cId, long hId) {
-        long tId =  Long.parseLong(session().get("id"));
+        long tId =  Long.parseLong(session().get("tid"));
         Map<Long, List<HCT>> hctMap = homeworkDao.map(tId);
         List<HS> homeworkScores = scoreDao.list(tId, cId, hId);
         return ok(views.html.teacher.score.list.render(hctMap, homeworkScores));
@@ -82,14 +82,14 @@ public class ScoreController extends Controller {
     }
 
     public Result add() {
-        long tId =  Long.parseLong(session().get("id"));
+        long tId =  Long.parseLong(session().get("tid"));
         Map<Long, List<HCT>> hctMap = homeworkDao.map(tId);
         List<HS> homeworkScores = scoreDao.noScorelist(tId, -1,-1);
         return ok(views.html.teacher.score.add.render(hctMap, homeworkScores));
     }
 
     public Result addSearch(long cId, long hId) {
-        long tId =  Long.parseLong(session().get("id"));
+        long tId =  Long.parseLong(session().get("tid"));
         Map<Long, List<HCT>> hctMap = homeworkDao.map(tId);
         List<HS> homeworkScores = scoreDao.noScorelist(tId, cId, hId);
         return ok(views.html.teacher.score.add.render(hctMap, homeworkScores));

@@ -20,18 +20,18 @@ public class CourseController extends Controller {
     }
 
     public Result list() {
-        long tId =  Long.parseLong(session().get("id"));
+        long tId =  Long.parseLong(session().get("sid"));
         List<CS> csList = csDao.optList(tId);
         return ok(views.html.student.course.list.render(csList));
     }
 
     public Result add() {
-        List<Course> courses = csDao.list(Long.parseLong(session().get("id")));
+        List<Course> courses = csDao.list(Long.parseLong(session().get("sid")));
         return ok(views.html.student.course.add.render(courses));
     }
 
     public Result save(long cId) {
-        long sId = Long.parseLong(session().get("id"));
+        long sId = Long.parseLong(session().get("sid"));
         CourseStudent cs = new CourseStudent();
         cs.setStudentId(sId);
         cs.setCourseId(cId);

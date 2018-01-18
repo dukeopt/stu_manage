@@ -4,11 +4,11 @@
 @(csList: List[CS], homeworkScores: List[HS])
 
 @main() {
-  @views.html.header.render
+  @views.html.student.header.render
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2" >
-      @views.html.left.render
+      @views.html.student.left.render
       </div><!--col-md-2 -->
       <div class="col-md-10">
           <!--画面内容-->
@@ -48,7 +48,7 @@
                 if ($(this).val() != -1) {
                   $.ajax({
                     type: "get",
-                    url: "/teacher/score/homework/list/" + $(this).val(),
+                    url: "/student/score/homework/list/" + $(this).val(),
                     dataType: "json",
                     success: function (data) {
                       $("#homework").append("<option value = '-1'>请选择作业</option>");

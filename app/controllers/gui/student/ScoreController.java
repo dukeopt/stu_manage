@@ -10,6 +10,7 @@ import models.construct.HS;
 import org.apache.commons.io.FileUtils;
 import play.data.DynamicForm;
 import play.data.FormFactory;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -19,6 +20,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class ScoreController extends Controller {
 
@@ -36,7 +38,7 @@ public class ScoreController extends Controller {
     }
 
     public Result list() {
-        long sId =  Long.parseLong(session().get("id"));
+        long sId =  Long.parseLong(session().get("sid"));
         List<CS> csList = courseStudentDao.optList(sId);
         List<HS> homeworkScores = scoreDao.studengList(sId, -1, -1);
         return ok(views.html.student.score.list.render(csList, homeworkScores));
@@ -44,21 +46,21 @@ public class ScoreController extends Controller {
 
 
     public Result search(long cId, long hId) {
-        long sId =  Long.parseLong(session().get("id"));
+        long sId =  Long.parseLong(session().get("sid"));
         List<CS> csList = courseStudentDao.optList(sId);
         List<HS> homeworkScores = scoreDao.studengList(sId, cId, hId);
         return ok(views.html.student.score.list.render(csList, homeworkScores));
     }
 
     public Result add() {
-        long sId =  Long.parseLong(session().get("id"));
+        long sId =  Long.parseLong(session().get("sid"));
         List<CS> csList = courseStudentDao.optList(sId);
         List<HCT> hctList = homeworkDao.noScorelist(sId, -1, -1);
         return ok(views.html.student.score.add.render(csList, hctList));
     }
 
     public Result addSearch(long cId, long hId) {
-        long sId =  Long.parseLong(session().get("id"));
+        long sId =  Long.parseLong(session().get("sid"));
         List<CS> csList = courseStudentDao.optList(sId);
         List<HCT> hctList = homeworkDao.noScorelist(sId, cId, hId);
         return ok(views.html.student.score.add.render(csList, hctList));
@@ -79,7 +81,7 @@ public class ScoreController extends Controller {
         Date now = new Date();
         String timestamp = formatDir.format(now);
 
-        String basePath = "student" + "/" + session().get("id") + "/" + timestamp + "/";
+        String basePath = "student" + "/" + session().get("sid") + "/" + timestamp + "/";
         String publicPath = "public" + "/" + basePath;
         String fileName = file_input.getFilename();
 
@@ -97,7 +99,7 @@ public class ScoreController extends Controller {
 
         DynamicForm from = formFactory.form().bindFromRequest();
 
-        long sId =  Long.parseLong(session().get("id"));
+        long sId =  Long.parseLong(session().get("sid"));
         Score score = new Score();
         score.setStudentId(sId);
         score.setHomeworkId(Long.parseLong(from.get("hId")));
@@ -110,5 +112,10 @@ public class ScoreController extends Controller {
         Score score = scoreDao.findById(id);
         File file = new File("public/" + score.getStudentHomeworkPath());
         return ok(file , /*inline = */false);
+    }
+
+    public Result homeworklist(Long cId) {
+        List<HCT> hctList = homeworkDao.slist(cId);
+        return ok(Json.toJson(hctList));
     }
 }

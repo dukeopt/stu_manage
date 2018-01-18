@@ -4,11 +4,11 @@
 @(hctMap: Map[Long, List[HCT]], homeworkScores: List[HS])
 
 @main() {
-  @views.html.header.render
+  @views.html.teacher.header.render
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2" >
-      @views.html.left.render
+      @views.html.teacher.left.render
       </div><!--col-md-2 -->
       <div class="col-md-10">
         <input type="hidden" id="leftmenu" value="11" >

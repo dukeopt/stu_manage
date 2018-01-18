@@ -58,9 +58,19 @@ public class LoginForm implements Validatable<List<ValidationError>> {
                 if (!person.getPassword().equals(password)) {
                     errors.add(new ValidationError("password", messageService.at("error.password")));
                 } else {
-                    session().put("id", String.valueOf(person.getId()));
-                    session().put("name", String.valueOf(person.getName()));
-                    session().put("type", type);
+                    if (type.equals("student")) {
+                        session().put("sid", String.valueOf(person.getId()));
+                        session().put("sname", String.valueOf(person.getName()));
+                        session().put("type", type);
+                    } else if (type.equals("teacher")) {
+                        session().put("tid", String.valueOf(person.getId()));
+                        session().put("tname", String.valueOf(person.getName()));
+                        session().put("type", type);
+                    } else {
+                        session().put("aid", String.valueOf(person.getId()));
+                        session().put("aname", String.valueOf(person.getName()));
+                        session().put("type", type);
+                    }
                 }
             }
         }

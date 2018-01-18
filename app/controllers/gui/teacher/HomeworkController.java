@@ -33,13 +33,13 @@ public class HomeworkController extends Controller {
     }
 
     public Result list() {
-        long tId =  Long.parseLong(session().get("id"));
+        long tId =  Long.parseLong(session().get("tid"));
         List<HCT> homeworks = homeworkDao.list(tId);
         return ok(views.html.teacher.homework.list.render(homeworks));
     }
 
     public Result add() {
-        List<CT> courses = ctDao.optList(Long.parseLong(session().get("id")));
+        List<CT> courses = ctDao.optList(Long.parseLong(session().get("tid")));
         return ok(views.html.teacher.homework.add.render(courses));
     }
 
@@ -55,7 +55,7 @@ public class HomeworkController extends Controller {
         Date now = new Date();
         String timestamp = formatDir.format(now);
 
-        String basePath = "teacher" + "/" + session().get("id") + "/" + timestamp + "/";
+        String basePath = "teacher" + "/" + session().get("tid") + "/" + timestamp + "/";
         String publicPath = "public" + "/" + basePath;
         String fileName = file_input.getFilename();
 

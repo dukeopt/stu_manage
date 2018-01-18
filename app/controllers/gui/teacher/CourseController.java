@@ -20,18 +20,18 @@ public class CourseController extends Controller {
     }
 
     public Result list() {
-        long tId =  Long.parseLong(session().get("id"));
+        long tId =  Long.parseLong(session().get("tid"));
         List<CT> cts = ctDao.optList(tId);
         return ok(views.html.teacher.course.list.render(cts));
     }
 
     public Result add() {
-        List<Course> courses = ctDao.list(Long.parseLong(session().get("id")));
+        List<Course> courses = ctDao.list(Long.parseLong(session().get("tid")));
         return ok(views.html.teacher.course.add.render(courses));
     }
 
     public Result save(long cId) {
-        long tId = Long.parseLong(session().get("id"));
+        long tId = Long.parseLong(session().get("tid"));
         CourseTeacher ct = new CourseTeacher();
         ct.setTeacherId(tId);
         ct.setCourseId(cId);

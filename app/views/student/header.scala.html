@@ -4,11 +4,11 @@
     @Messages("title.default")
     </a>
     <div class="navbar-text navbar-right">
-    @if(session.get("aname") != null){
+    @if(session.get("sname") != null){
       <div class="dropdown pull-right">
         <span>欢迎您</span>
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          @session.get("aname")
+          @session.get("sname")
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">

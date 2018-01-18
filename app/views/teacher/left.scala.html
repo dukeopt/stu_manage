@@ -1,0 +1,31 @@
+<div class="sidebar content-box" >
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">教师管理</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="current"><a href="/teacher/course/list"><i class="glyphicon glyphicon-user"></i>选课管理</a></li>
+            <li class="current"><a href="/teacher/homework/list"><i class="glyphicon glyphicon-user"></i>作业管理</a></li>
+            <li class="submenu">
+              <a href="#" >
+                <i class="glyphicon glyphicon-calendar"></i>
+                作业成绩管理 <b class="caret"></b>
+              </a>
+              <ul>
+                <li id="11"><a href="/teacher/score/list">作业成绩一览</a></li>
+                <li id="12"><a href="/teacher/score/add">作业成绩录入</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var li = $("#leftmenu").val();
+    console.log(li);
+    $("#"+li).addClass("current");
+  });
+</script>
+
+</div>

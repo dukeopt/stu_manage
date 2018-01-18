@@ -130,6 +130,24 @@ public class HomeworkDao {
         return hcts;
     }
 
+    /**
+     * 根据课程id选出所有作业
+     * @param cId
+     * @return list
+     */
+    public List<HCT> slist(long cId) {
+        String sql = " SELECT H.ID AS H_ID, H.NAME AS H_NAME, H.PATH AS H_PATH, H.DATE AS DATE," +
+                "        C.ID AS C_ID, C.NAME AS C_NAME, T.ID AS T_ID, T.NAME AS T_NAME" +
+                " FROM HOMEWORK H " +
+                " INNER JOIN COURSE_TEACHER CT ON H.COURSE_TEACHER_ID = CT.ID" +
+                " INNER JOIN TEACHER T ON CT.TEACHER_ID = T.ID " +
+                " INNER JOIN COURSE C ON CT.COURSE_ID = C.ID " +
+                " WHERE C.ID = " + cId +
+                " ORDER BY C.ID";
+
+        return getList(sql);
+    }
+
     public Homework findById(long id) {
         return find.byId(id);
     }
