@@ -28,8 +28,8 @@
                 作业成绩管理 <b class="caret"></b>
               </a>
               <ul>
-                <li><a href="/teacher/score/list">作业成绩一览</a></li>
-                <li><a href="/teacher/score/add">作业成绩录入</a></li>
+                <li id="11"><a href="/teacher/score/list">作业成绩一览</a></li>
+                <li id="12"><a href="/teacher/score/add">作业成绩录入</a></li>
               </ul>
             </li>
           </ul>
@@ -50,14 +50,20 @@
               作业管理 <b class="caret"></b>
             </a>
             <ul>
-              <li><a href="/student/score/list">作业成绩一览</a></li>
-              <li><a href="/student/score/add">上传作业</a></li>
+              <li id="21"><a href="/student/score/list">作业成绩一览</a></li>
+              <li id="22"><a href="/student/score/add">上传作业</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
   }
-
+<script type="text/javascript">
+  $(document).ready(function(){
+    var li = $("#leftmenu").val();
+    console.log(li);
+    $("#"+li).addClass("current");
+  });
+</script>
 
 </div>
